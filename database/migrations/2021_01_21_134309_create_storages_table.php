@@ -15,11 +15,13 @@ class CreateStoragesTable extends Migration
     {
         Schema::create('storages', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->foreignId('user_id')
+                    ->constrained('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->string('name');
             $table->string('file');
             $table->string('hash');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->timestamps();
         });
     }
