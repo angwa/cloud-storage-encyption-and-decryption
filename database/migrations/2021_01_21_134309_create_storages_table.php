@@ -21,6 +21,7 @@ class CreateStoragesTable extends Migration
                     ->onDelete('cascade');
             $table->string('name');
             $table->string('file');
+            $table->string('type');
             $table->string('hash');
             $table->timestamps();
         });

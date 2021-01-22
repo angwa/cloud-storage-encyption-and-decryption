@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
 
 class FileUploadRequest extends FormRequest
 {
@@ -15,7 +13,7 @@ class FileUploadRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -30,15 +28,4 @@ class FileUploadRequest extends FormRequest
             'file' =>'required',
         ];
     }
-
-    protected function failedValidation(Validator $validator)
-    {
-        $response = [
-            'status' => 'failure',
-            'status_code' => 400,
-            'message' => 'Please fill the required fields',
-            'errors' => $validator->errors(),
-        ];
-
-        return $response;
 }

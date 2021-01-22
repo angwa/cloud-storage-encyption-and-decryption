@@ -12,7 +12,7 @@
         <ul class="list-group">
           <li class="list-group-item active">Dashboard</a></li>
          <li class="list-group-item"><a href="{{route('upload')}}">Upload File <i class="fa fa-upload"></i></a></li>
-          <li class="list-group-item">View Files</li>
+            <li class="list-group-item"><a href="{{route('view')}}">View Files</a></li>
           <li class="list-group-item">Download File</li>
           <li class="list-group-item">Update Profile</li>
         </ul>
@@ -21,7 +21,28 @@
         <h4>{{Auth::user()->name}}</h4>
         <hr>
         <h5>Upload Files</h5>
+         @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{$errors->first() }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+        @endif   
 
+         @if(session()->has('warning'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{session()->get('warning') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+        @endif 
+         @if(session()->has('msg'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">{{session()->get('msg') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+        @endif   
         <form action="{{route('submitF')}}" method="post" enctype="multipart/form-data">
             @csrf
             <label>Input File Name</label>
