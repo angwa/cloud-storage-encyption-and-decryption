@@ -39,6 +39,6 @@ class User extends Authenticatable
 
     public function storage()
     {
-        return $this->hasMany(Storage::class);
+        return $this->hasMany(Storage::class)->orderBy('created_at','desc');
     }
 }

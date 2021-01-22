@@ -16,6 +16,11 @@ Licence URI: https://www.os-templates.com/template-terms
 <link href="{{asset('styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
 <link href="{{asset('styles/animate.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('styles/bootstrap.css')}}" rel="stylesheet" type="text/css">
+ <link href="{{ asset('scripts/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('scripts/datatables/export/buttons.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('styles/plugins.min.css') }}" rel="stylesheet" type="text/css" />
 <style type="text/css">
   .login{
     background-color: #fff;
@@ -112,10 +117,23 @@ Licence URI: https://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
 <!-- JAVASCRIPTS -->
-<script src="{{asset('scripts/jquery.min.js')}}"></script>
+<script src="{{asset('scripts/datatables/jquery.min.js')}}"></script>
 <script src="{{asset('scripts/jquery.backtotop.js')}}"></script>
 <script src="{{asset('scripts/jquery.mobilemenu.js')}}"></script>
 <script src="{{asset('scripts/wow.js')}}"></script>
+
+
+<!-- Data Table -->
+<script src="{{ asset('scripts/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('scripts/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('scripts/datatables/export/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('scripts/datatables/export/buttons.flash.min.js') }}"></script>
+<script src="{{ asset('scripts/datatables/export/jszip.min.js') }}"></script>
+<script src="{{ asset('scripts/datatables/export/pdfmake.min.js') }}"></script>
+<script src="{{ asset('scripts/datatables/export/vfs_fonts.js') }}"></script>
+<script src="{{ asset('scripts/datatables/export/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('scripts/datatables/export/buttons.print.min.js') }}"></script>
+<script src="{{ asset('scripts/table/table_data.js') }}"></script>
 <script>
     new WOW().init();
 

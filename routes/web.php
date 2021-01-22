@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FileManagerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +21,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::group(['middleware' => 'auth'], function () {
+Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
+Route::get('/file-upload', [FileManagerController::class, 'index'])->name('upload');
+Route::post('/submit-file', [FileManagerController::class, 'store'])->name('submitF');
+Route::get('/view-files', [FileManagerController::class, 'show'])->name('view');
+Route::delete('/delete/{id}', [FileManagerController::class, 'delete'])->name('delete');
+});
 
-Route::get('/dashboard', 'HomeController@index')->name('home');
-
-Route::get('/home', 'HomeController@index')->name('home');
