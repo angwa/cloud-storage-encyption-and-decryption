@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FileManagerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +23,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
+Route::get('/file-upload', [FileManagerController::class, 'index'])->name('upload');
+Route::post('/submit-file', [FileManagerController::class, 'store'])->name('submitF');
 
