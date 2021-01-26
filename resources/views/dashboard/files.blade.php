@@ -54,7 +54,7 @@
                     </form>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-success">Decrypt <i class="fa fa-download"></i></a>
+                    <a href="{{route('decrypt',['id'=>$data->id])}}" class="btn btn-sm btn-success">Decrypt <i class="fa fa-download"></i></a>
                 </td>
             </tr>
             @endforeach
