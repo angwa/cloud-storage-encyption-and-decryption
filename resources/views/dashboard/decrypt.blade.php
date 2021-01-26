@@ -20,7 +20,7 @@
     <div class="col-md-8">
         <h4>{{Auth::user()->name}}</h4>
         <hr>
-        <h5>Upload Files</h5>
+        <h5>Decrypt File - {{$data->name}}</h5>
          @if($errors->any())
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">{{$errors->first() }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -29,31 +29,25 @@
                     </div>
         @endif   
 
-         @if(session()->has('warning'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{session()->get('warning') }}
+         @if(session()->has('not'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{session()->get('not') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
         @endif 
          @if(session()->has('msg'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <h3>Success</h3>
-                        <hr>
-                        {{session()->get('msg') }}
-                        <hr>
-                        <h4>{{session()->get('key')}}</h4>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">{{session()->get('msg') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
         @endif   
-        <form action="{{route('submitF')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('check')}}" method="post">
             @csrf
-            <label>Input File Name</label>
-            <input type="text" name="name" class="form-control">
-            <label>Select File</label>
-            <input type="file" name="file" class="form-control">
+            <label>Enter File Key</label>
+            <input type="text" name="key" class="form-control">
+            <input type="hidden" name="file" class="form-control" value="{{$data->id}}">
             <br>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
